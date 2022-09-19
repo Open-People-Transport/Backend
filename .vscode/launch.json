@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch GraphQL debug server",
+      "console": "integratedTerminal",
+      "type": "python",
+      "request": "launch",
+      "module": "strawberry",
+      "args": ["server", "app.graphql:schema", "--host", "localhost"],
+      "justMyCode": false
+    }
+  ]
+}

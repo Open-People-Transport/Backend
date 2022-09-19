@@ -70,6 +70,8 @@ repos:
     hooks:
       - id: bandit
         name: Check for Python security issues (bandit)
+        args: ["--configfile", "pyproject.toml"]
+        additional_dependencies: [toml]
 
   - repo: https://github.com/python-poetry/poetry
     rev: 1.2.1
