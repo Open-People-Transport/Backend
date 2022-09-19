@@ -1,0 +1,63 @@
+[tool.poetry]
+name = "open-people-transport-backend"
+version = "0.0.0"
+description = "Open provider of public transportation data"
+authors = ["Dmitry Semenov <lonelyteapot@gmail.com>"]
+repository = "https://github.com/Open-People-Transport/Backend"
+license = "AGPL-3.0-or-later"
+readme = "README.md"
+packages = [{include = "app"}]
+classifiers = [
+    "Development Status :: 1 - Planning",
+    "Intended Audience :: Information Technology",
+    "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Topic :: Other/Nonlisted Topic",
+    "Private :: Do Not Upload",
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[tool.poetry.group.dev.dependencies]
+bandit = {extras = ["toml"], version = "^1.7.4"}
+pydocstyle = {extras = ["toml"], version = "^6.1.1"}
+pyproject-flake8 = "^5.0.4"
+pytest = "^7.1.2"
+pre-commit = "^2.20.0"
+
+[tool.poetry.scripts]
+test = "scripts.test:test"
+
+[tool.isort]
+src_paths = ["app", "tests"]
+profile = "black"
+line_length = 100
+combine_star = true
+lines_after_imports = 2
+
+[tool.black]
+line-length = 100
+
+[tool.pydocstyle]
+convention = "pep257"
+add-ignore = "D1"
+
+[tool.flake8]
+max-line-length = 100
+
+[tool.pyright]
+typeCheckingMode = "basic"
+# Will cause issues when virtual environments are in a different place.
+# See https://github.com/RobertCraigie/pyright-python#pre-commit
+venvPath = "."
+venv = ".venv"
+
+[tool.bandit]
+skips = ["B101"]
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
